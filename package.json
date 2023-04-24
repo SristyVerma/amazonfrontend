@@ -2,7 +2,7 @@
   "name": "amaazon",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://calm-ruby-beetle-fez.cyclic.app/",
+  "proxy": "https://calm-ruby-beetle-fez.cyclic.app",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.18",
     "@chakra-ui/react": "^2.5.5",
