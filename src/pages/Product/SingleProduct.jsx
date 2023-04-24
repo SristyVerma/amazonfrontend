@@ -18,7 +18,7 @@ const getindividiualdata=async ()=>{
 
 
 
-const res= await axios.get(`/singleproduct/${id}`)
+const res= await axios.get(`https://calm-ruby-beetle-fez.cyclic.app/singleproduct/${id}`)
 if(res.status!==201){
     console.log("no data available for this id")
 }else{
