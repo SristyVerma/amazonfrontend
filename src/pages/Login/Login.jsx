@@ -47,9 +47,7 @@ const senddata=async(e)=>{
     if (res.status === 400 || !res.data) {
       // alert("Invalid Details 👎!");
       console.log("invalid details");
-      toast.warn("Invalid Details 👎!", {
-        position: "top-center"
-    });
+      alert("Invalid Details 👎!");
      
   } else {
     //so that when we login  we set the data to setaccount
@@ -58,11 +56,10 @@ const senddata=async(e)=>{
       // alert("Login Successfully done 😃!", {
       //     position: "top-center"
       // });
-      toast.success("Login Successfully done 😃!", {
-        position: "top-center"
-    });
+      alert("Login Successfully done 😃!");
   }
   } catch (error) {
+      alert("Provide Correct Credential")
     console.error(error.message);
     // Handle the error here
   }
@@ -101,7 +98,7 @@ const senddata=async(e)=>{
   </div>
   <button className="signin_btn" onClick={senddata}>Submit</button>
 </form>
-<ToastContainer />
+{/* <ToastContainer /> */}
 <div className="create_accountinfo">
   <p>New To Amazon</p>
   <Link to='/signup'><button>Create New Account</button></Link>

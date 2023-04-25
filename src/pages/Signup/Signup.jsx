@@ -46,6 +46,11 @@ try {
     alert("Registration Successfully done 😃!");
 }
 } catch (error) {
+  if(password.length<6){alert("Password length should e atleast 6")}
+  else if(password!==cpassword){alert("Your Passwords are not matching")}
+  else{
+    alert("Email and Number should always be unique")
+  }
  console.log('error in signup',error)
 }
 }
