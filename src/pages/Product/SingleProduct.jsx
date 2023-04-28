@@ -47,7 +47,7 @@ const addtocart = async (id) => {
     //in inddata we are storing every details of that particular product
     console.log(id);
     try {
-        const checkres = await fetch(`/addcart/${id}`, {
+        const checkres = await fetch(`https://calm-ruby-beetle-fez.cyclic.app/addcart/${id}`, {
             method: "POST",
             headers: {
                 Accept: "application/json",

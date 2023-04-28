@@ -10,7 +10,7 @@ const Option = ({deletedataid,getupdateddatafterdelete}) => {
         try {
 
             //we are passing same id as we are getting in the props
-            const res = await fetch(`/remove/${deletedataid}`, {
+            const res = await fetch(`https://calm-ruby-beetle-fez.cyclic.app/remove/${deletedataid}`, {
                 method: "GET",
                 headers: {
                     Accept: "application/json",

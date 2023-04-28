@@ -11,7 +11,7 @@ const Cart = () => {
   // console.log("hehehhe",cartdata)
   // console.log(cartdata.carts)
   const getdatacart = async () => {
-    const res = await fetch("/cartdetails", {
+    const res = await fetch("https://calm-ruby-beetle-fez.cyclic.app/cartdetails", {
       method: "GET",
       headers: {
         Accept: "application/json",

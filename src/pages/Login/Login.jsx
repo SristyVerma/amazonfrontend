@@ -28,7 +28,7 @@ const Login = () => {
     const { email, password } = logdata;
     // console.log(email);
     try {
-        const res = await fetch("/login", {
+        const res = await fetch("https://calm-ruby-beetle-fez.cyclic.app/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
