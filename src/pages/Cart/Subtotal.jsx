@@ -6,7 +6,7 @@ const Subtotal = ({item}) => {
     const totalAmount = () => {
         let price = 0
         item.map((e) => {
-            price += e.price.cost
+            return price += e.price.cost
         });
         setPrice(price)
     }

@@ -18,7 +18,7 @@ const getindividiualdata=async ()=>{
 
 
 
-const res= await axios.get(`https://calm-ruby-beetle-fez.cyclic.app/singleproduct/${id}`)
+const res= await axios.get(`/singleproduct/${id}`)
 if(res.status!==201){
     console.log("no data available for this id")
 }else{
@@ -46,28 +46,34 @@ useEffect(()=>{getindividiualdata()
 const addtocart = async (id) => {
     //in inddata we are storing every details of that particular product
     console.log(id);
-    const checkres = await fetch(`/addcart/${id}`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            inddata
-        }),
-        credentials: "include"
-    });
- 
-    const data1 = await checkres.json();
-    // console.log(data1[1] +  'frontend data');
-console.log(data1)
-    if (checkres.status === 401||!data1) {
-        alert("user invalid")
-    } else {
-        // alert("data added to cart");
-        history('/cart')
-        setAccount(data1)
-        // history.push("/buynow");
+    try {
+        const checkres = await fetch(`/addcart/${id}`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                inddata
+            }),
+            credentials: "include"
+        });
+ console.log("addto cart working")
+        const data1 = await checkres.json();
+        // console.log(data1[1] +  'frontend data');
+        console.log("respone",data1)
+        if (checkres.status === 401||!data1) {
+            alert("user invalid")
+        } else {
+            // alert("data added to cart");
+            history('/cart')
+            setAccount(data1)
+            // history.push("/buynow");
+        }
+    } catch (error) {
+        console.log("Error:", error);
+        // alert("Please Login First!!!!");
+        // history('/login')
     }
 }
 

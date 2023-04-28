@@ -1,10 +1,11 @@
 import React ,{useState}from 'react'
 import './Signup.css'
 import logo from '../../components/Apni_dukan_logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Signup = () => {
+  const history=useNavigate()
   const [udata, setUdata] = useState({
     fname: "",
     email: "",
@@ -22,37 +23,73 @@ const adddata=(e)=>{
   })
   console.log(udata)
 }
-const senddata=async(e)=>{
-e.preventDefault()
-const { fname, email, mobile, password, cpassword } = udata;
-try {
-  const response = await axios.post('/register', {
-    fname, email, mobile, password, cpassword
-  }, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+// const senddata=async(e)=>{
+// e.preventDefault()
+// const { fname, email, mobile, password, cpassword } = udata;
+// try {
+//   const response = await axios.post('/register', {
+//     fname, email, mobile, password, cpassword
+//   }, {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   });
 
-  const res = response.data;
-  // console.log("user signup details",res)
-  if (res.status === 422 || !res) {
-    alert("Invalid Details !");
-} else {
-    setUdata({
-        ...udata, fname: "", email: "",
-        mobile: "", password: "", cpassword: ""
-    });
-    alert("Registration Successfully done 😃!");
-}
-} catch (error) {
-  if(password.length<6){alert("Password length should e atleast 6")}
-  else if(password!==cpassword){alert("Your Passwords are not matching")}
-  else{
-    alert("Email and Number should always be unique")
+//   const res = response.data;
+//   // console.log("user signup details",res)
+//   if (res.status === 422 || !res) {
+//     alert("Invalid Details !");
+// } else {
+//     setUdata({
+//         ...udata, fname: "", email: "",
+//         mobile: "", password: "", cpassword: ""
+//     });
+//     alert("Registration Successfully done 😃!");
+// }
+// } catch (error) {
+//   if(password.length<6){alert("Password length should be atleast 6")}
+//   else if(password!==cpassword){alert("Your Passwords are not matching")}
+
+//  console.log('error in signup',error)
+// }
+// }
+const senddata = async (e) => {
+  e.preventDefault();
+
+  const { fname, email, mobile, password, cpassword } = udata;
+  try {
+      const res = await fetch("https://calm-ruby-beetle-fez.cyclic.app/register", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              fname, email, mobile, password, cpassword
+          })
+      });
+
+      const data = await res.json();
+      // console.log(data);
+      if(fname===''||password===''||cpassword===''||email===''||mobile===''){
+        return alert("Please fill all the data")
+      }
+if(password!==cpassword){return alert("Password doesn't match")}
+if(password.length<6){return alert("Password length should be atleast 6")}
+      if (res.status === 422 || !data) {
+          alert("Please make sure email and mobile should be unique 👎!")
+      } else {
+          setUdata({
+              ...udata, fname: "", email: "",
+              mobile: "", password: "", cpassword: ""
+          });
+         alert("Registration Successfully done 😃!")
+         history('/login')
+      }
+  } catch (error) {
+    if(password!==cpassword){return alert("Password doesn't match")}
+if(password.length<6){return alert("Password length should be atleast 6")}
+      console.log("front end ka catch error hai" + error.message);
   }
- console.log('error in signup',error)
-}
 }
 
 

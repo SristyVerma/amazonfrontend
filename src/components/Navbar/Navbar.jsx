@@ -44,7 +44,7 @@ const Navbar = () => {
 
   //we are writting this just to check if user is logged in or not
   const getdetailsvaliduser = async () => {
-    const res = await fetch("/validuser", {
+    const res = await fetch("validuser", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -68,7 +68,7 @@ const Navbar = () => {
   }, []);
 
   const logoutuser = async () => {
-    const res2 = await fetch("/logout", {
+    const res2 = await fetch("logout", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -115,7 +115,7 @@ const Navbar = () => {
             <input
               type="text"
               name=""
-              placeholder="Search Amazon.in"
+              placeholder="Search ApniDukan.in"
               onChange={(e) => getText(e.target.value)}
             />
             <div className="navsearch">

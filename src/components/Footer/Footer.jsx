@@ -15,7 +15,7 @@ const Footer = () => {
                     <p>About us</p>
                     <p>Careers</p>
                     <p>Press Releases</p>
-                    <p>Amazon Cares</p>
+                    <p>Apni Dukan Cares</p>
                 </div>
                 <div className="footr_details_one">
                     <h3>Connect with Us</h3>

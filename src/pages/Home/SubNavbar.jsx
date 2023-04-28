@@ -35,7 +35,7 @@ const SubNavbar = () => {
                     <p>Electronics</p>
                     <p>Prime</p>
                     <p>Today's Deals</p>
-                    <p>Amazon Pay</p>
+                    <p>Apni Dukan Pay</p>
                 </div>
                 {/* <div className="right_data">
                     <img src="https://m.media-amazon.com/images/G/01/primevideo/seo/primevideo-seo-logo.png" alt="navdata" />
